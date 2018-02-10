@@ -22,3 +22,7 @@ class NewsSpider(scrapy.Spider):
         # get related news
         for related in response.css('div.cuerpoarticulo2 a.negro::attr(href)').extract():
             yield response.follow(related, callback=self.parse_content)
+
+        # top news
+        for top in response.css('div.menucontenido3 a.blanco::attr(href)').extract():
+            yield response.follow(top, callback=self.parse_content)
