@@ -18,3 +18,7 @@ class NewsSpider(scrapy.Spider):
         titulo = response.css('div.tituloreal::text').extract_first()
         contenido = response.css('div.cuerpoarticulo').extract_first()
         yield {'titulo': titulo, 'contenido': remove_tags(contenido)}
+
+        # get related news
+        for related in response.css('div.cuerpoarticulo2 a.negro::attr(href)').extract():
+            yield response.follow(related, callback=self.parse_content)
