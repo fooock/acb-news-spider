@@ -20,6 +20,7 @@ class NewsSpider(scrapy.Spider):
         contenido = response.css('div.cuerpoarticulo').extract_first()
         url = response.url
         timestamp = datetime.datetime.today().timestamp()
+
         #date = response.css('div.cuerpoarticulo b::text').extract_first().split(',')[1].replace('-', '')
         #date_time = datetime.datetime.strptime(date, '%d %b. %Y.')
 
