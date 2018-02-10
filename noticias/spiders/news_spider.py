@@ -1,4 +1,5 @@
 import scrapy
+import datetime
 
 from scrapy.utils.markup import remove_tags
 
@@ -18,7 +19,11 @@ class NewsSpider(scrapy.Spider):
         titulo = response.css('div.tituloreal::text').extract_first()
         contenido = response.css('div.cuerpoarticulo').extract_first()
         url = response.url
-        yield {'titulo': titulo, 'contenido': remove_tags(contenido), 'url': url, 'record_type': 'r1', 'source': 'acbcom'}
+        timestamp = datetime.datetime.today().timestamp()
+        #date = response.css('div.cuerpoarticulo b::text').extract_first().split(',')[1].replace('-', '')
+        #date_time = datetime.datetime.strptime(date, '%d %b. %Y.')
+
+        yield {'titulo': titulo, 'contenido': remove_tags(contenido), 'url': url, 'timestamp': timestamp, 'record_type': 'r1', 'source': 'acbcom'}
 
         # get related news
         for related in response.css('div.cuerpoarticulo2 a.negro::attr(href)').extract():
