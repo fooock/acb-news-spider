@@ -9,10 +9,10 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'noticias'
+BOT_NAME = 'news'
 
-SPIDER_MODULES = ['noticias.spiders']
-NEWSPIDER_MODULE = 'noticias.spiders'
+SPIDER_MODULES = ['news.spiders']
+NEWSPIDER_MODULE = 'news.spiders'
 
 # encoding
 FEED_EXPORT_ENCODING = 'utf-8'

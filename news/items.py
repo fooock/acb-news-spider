@@ -8,6 +8,6 @@
 import scrapy
 
 
-class NoticiasItem(scrapy.Item):
+class NewsItem(scrapy.Item):
     titulo = scrapy.Field()
     contenido = scrapy.Field()
